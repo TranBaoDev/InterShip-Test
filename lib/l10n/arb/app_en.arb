@@ -1,0 +1,15 @@
+{
+    "@@locale": "en",
+    "deliveryTo": "Delivery to",
+    "deliveryAddress": "103 Hoai Thanh",
+    "hintSearch": "Find food or restaurant",
+    "foodname": "Coffee",
+    "komiSuggestion": "Komi's Suggestion",
+    "dontMissKomiSuggestion": "Đừng bỏ lỡ đề xuất từ KOMI dành cho bạn",
+    "promotion": "12% off",
+    "nameRestaurant": "Your Restaurant",
+    "deliveryPromo": "16% off",
+    "newRestaurant": "Quán mới - Bạn có thể thử",
+    "newResnewExp": "Thử quán mới - Trải nghiệm mới",
+    "delicResNearby": "Quán ngon gần đây"
+}

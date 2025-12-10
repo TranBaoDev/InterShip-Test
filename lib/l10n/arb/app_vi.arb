@@ -1,0 +1,15 @@
+{
+    "@@locale": "vi",
+    "deliveryTo": "Giao tới",
+    "deliveryAddress": "103 Hoài Thanh",
+    "hintSearch": "Tìm cửa hàng hoặc sản phẩm",
+    "foodname": "Cà phê",
+    "komiSuggestion": "Komi đề xuất",
+    "dontMissKomiSuggestion": "Đừng bỏ lỡ đề xuất từ KOMI dành cho bạn",
+    "promotion": "Giảm 12%",
+    "nameRestaurant": "Tên cửa hàng của bạn",
+    "deliveryPromo": "Giảm 16%",
+    "newRestaurant": "Quán mới - Bạn có thể thử",
+    "newResnewExp": "Thử quán mới - Trải nghiệm mới",
+    "delicResNearby": "Quán ngon gần đây"
+}
