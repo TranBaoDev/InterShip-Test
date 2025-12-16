@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:testing/core/di/get_it.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -26,6 +27,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   };
 
   Bloc.observer = const AppBlocObserver();
+
+  // Setup dependency injection
+  setupLocator();
 
   // Add cross-flavor configuration here
 

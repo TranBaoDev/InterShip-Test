@@ -1,6 +1,5 @@
 # Miscellaneous
 *.class
-<<<<<<< HEAD
 *.log
 *.pyc
 *.swp
@@ -22,7 +21,6 @@ migrate_working_dir/
 .project
 .settings/
 .vscode/*
-=======
 *.lock
 *.log
 *.pyc
@@ -50,35 +48,24 @@ migrate_working_dir/
 /packages/flutter/coverage/
 version
 analysis_benchmark.json
->>>>>>> 184f6e8bcd8f49917d3864bbd7abaa1df3d7bc7d
 
 # packages file containing multi-root paths
 .packages.generated
 
 # Flutter/Dart/Pub related
 **/doc/api/
-<<<<<<< HEAD
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.packages
-.pub-cache/
-=======
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 **/generated_plugin_registrant.dart
 .packages
 .pub-preload-cache/
->>>>>>> 184f6e8bcd8f49917d3864bbd7abaa1df3d7bc7d
 .pub/
 build/
 flutter_*.png
 linked_*.ds
 unlinked.ds
 unlinked_spec.ds
-<<<<<<< HEAD
 .fvm/
 
 # Android related
@@ -92,18 +79,6 @@ unlinked_spec.ds
 **/android/app/debug
 **/android/app/profile
 **/android/app/release
-=======
-
-# Android related
-**/android/**/gradle-wrapper.jar
-.gradle/
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
-**/android/local.properties
-**/android/**/GeneratedPluginRegistrant.java
-**/android/key.properties
->>>>>>> 184f6e8bcd8f49917d3864bbd7abaa1df3d7bc7d
 *.jks
 
 # iOS/XCode related
@@ -123,29 +98,20 @@ unlinked_spec.ds
 **/ios/**/profile
 **/ios/**/xcuserdata
 **/ios/.generated/
-<<<<<<< HEAD
-=======
 **/ios/Flutter/.last_build_id
->>>>>>> 184f6e8bcd8f49917d3864bbd7abaa1df3d7bc7d
 **/ios/Flutter/App.framework
 **/ios/Flutter/Flutter.framework
 **/ios/Flutter/Flutter.podspec
 **/ios/Flutter/Generated.xcconfig
-<<<<<<< HEAD
 **/ios/Flutter/app.flx
 **/ios/Flutter/app.zip
 **/ios/Flutter/.last_build_id
-=======
 **/ios/Flutter/ephemeral
-**/ios/Flutter/app.flx
-**/ios/Flutter/app.zip
->>>>>>> 184f6e8bcd8f49917d3864bbd7abaa1df3d7bc7d
 **/ios/Flutter/flutter_assets/
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 
-<<<<<<< HEAD
 # Coverage
 coverage/
 
@@ -162,7 +128,6 @@ app.*.symbols
 app.*.map.json
 
 # Exceptions to the above rules.
-=======
 # macOS
 **/Flutter/ephemeral/
 **/Pods/
@@ -187,13 +152,11 @@ coverage/
 app.*.symbols
 
 # Exceptions to above rules.
->>>>>>> 184f6e8bcd8f49917d3864bbd7abaa1df3d7bc7d
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-<<<<<<< HEAD
 !/dev/ci/**/Gemfile.lock
 !.vscode/extensions.json
 !.vscode/launch.json
@@ -203,6 +166,4 @@ app.*.symbols
 
 # Generated l10n files
 lib/l10n/gen/
-=======
 !/dev/ci/**/Gemfile.lock
->>>>>>> 184f6e8bcd8f49917d3864bbd7abaa1df3d7bc7d
