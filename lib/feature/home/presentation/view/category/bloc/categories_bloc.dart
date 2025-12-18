@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:testing/shared/data/model/category_model.dart';
+import 'package:testing/shared/data/model/catogory/category_model.dart';
 import 'package:testing/shared/data/repo/category_repository.dart';
 
 part 'categories_event.dart';
@@ -21,7 +21,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   ) async {
     emit(const CategoriesLoading());
     try {
-      final categories = await repository.getCategories();
+      final categories = await repository.find(filter: 'isDeleted=false');
       emit(CategoriesLoaded(categories));
     } catch (e) {
       emit(CategoriesError('Unable to load the list of categories: $e'));
@@ -33,7 +33,9 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     Emitter<CategoriesState> emit,
   ) async {
     try {
-      final categories = await repository.getCategories();
+      final categories = await repository.find(
+        filter: 'isDeleted=false',
+      );
       emit(CategoriesLoaded(categories));
     } catch (e) {
       emit(CategoriesError('Unable to refresh categories: $e'));

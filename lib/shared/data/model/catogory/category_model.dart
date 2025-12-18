@@ -7,7 +7,7 @@ part 'category_model.g.dart';
 @freezed
 abstract class CategoryModel with _$CategoryModel {
   const factory CategoryModel({
-    @JsonKey(name: '_id') String? sId,
+    @JsonKey(name: '_id') String? id,
     int? position,
     @Default(false) bool isDeleted,
     String? thumbnail,
