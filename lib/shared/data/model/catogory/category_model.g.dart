@@ -8,7 +8,7 @@ part of 'category_model.dart';
 
 _CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
     _CategoryModel(
-      sId: json['_id'] as String?,
+      id: json['_id'] as String?,
       position: (json['position'] as num?)?.toInt(),
       isDeleted: json['isDeleted'] as bool? ?? false,
       thumbnail: json['thumbnail'] as String?,
@@ -24,7 +24,7 @@ _CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CategoryModelToJson(_CategoryModel instance) =>
     <String, dynamic>{
-      '_id': instance.sId,
+      '_id': instance.id,
       'position': instance.position,
       'isDeleted': instance.isDeleted,
       'thumbnail': instance.thumbnail,

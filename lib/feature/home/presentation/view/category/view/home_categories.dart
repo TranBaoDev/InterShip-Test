@@ -49,14 +49,6 @@ class _HomeCategoriesState extends State<HomeCategories> {
                 ),
               );
             }
-            if (state is CategorySuccess) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.message),
-                  backgroundColor: Colors.green,
-                ),
-              );
-            }
           },
           builder: (context, state) {
             if (state is CategoriesLoading) {
@@ -97,26 +89,11 @@ class _HomeCategoriesState extends State<HomeCategories> {
                             ),
                         itemCount: pageItems.length,
                         itemBuilder: (context, index) {
-                          // final hasImg =
-                          //     state.categories[index].thumbnail != null &&
-                          //     state.categories.isNotEmpty;
-                          // if (!hasImg) {
-                          //   return CircleAvatar(
-                          //     radius: 30,
-                          //     backgroundColor: Colors.black12,
-                          //     child: Text(
-                          //       '${state.categories[index].name}',
-                          //       textAlign: TextAlign.center,
-                          //       style: AppTextStyle.bodyBold,
-                          //     ),
-                          //   );
-                          // }
                           return Column(
                             children: [
                               ClipOval(
                                 child: CachedNetworkImage(
-                                  imageUrl:
-                                      state.categories[index].thumbnail ?? '',
+                                  imageUrl: '${pageItems[index].thumbnail}',
                                   width: 60,
                                   height: 60,
                                   fit: BoxFit.cover,
@@ -141,7 +118,7 @@ class _HomeCategoriesState extends State<HomeCategories> {
                                 height: 7,
                               ),
                               Text(
-                                '${state.categories[index].name}',
+                                '${pageItems[index].name}',
                                 textAlign: TextAlign.center,
                                 style: AppTextStyle.bodyBold,
                               ),

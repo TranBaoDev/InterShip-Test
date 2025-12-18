@@ -20,8 +20,14 @@ class DioClient {
   late final Dio _dio;
 
   // GET
-  Future<Response> get(String path) async {
-    return _dio.get(path);
+  Future<Response> get(
+    String path, {
+    Map<String, dynamic>? queryParameters,
+  }) {
+    return _dio.get(
+      path,
+      queryParameters: queryParameters,
+    );
   }
 
   // POST

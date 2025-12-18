@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CategoryModel {
 
-@JsonKey(name: '_id') String? get sId; int? get position; bool get isDeleted; String? get thumbnail; String? get name; DateTime? get createdAt; DateTime? get updatedAt; String? get slug;
+@JsonKey(name: '_id') String? get id; int? get position; bool get isDeleted; String? get thumbnail; String? get name; DateTime? get createdAt; DateTime? get updatedAt; String? get slug;
 /// Create a copy of CategoryModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $CategoryModelCopyWith<CategoryModel> get copyWith => _$CategoryModelCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryModel&&(identical(other.sId, sId) || other.sId == sId)&&(identical(other.position, position) || other.position == position)&&(identical(other.isDeleted, isDeleted) || other.isDeleted == isDeleted)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.slug, slug) || other.slug == slug));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryModel&&(identical(other.id, id) || other.id == id)&&(identical(other.position, position) || other.position == position)&&(identical(other.isDeleted, isDeleted) || other.isDeleted == isDeleted)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.slug, slug) || other.slug == slug));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,sId,position,isDeleted,thumbnail,name,createdAt,updatedAt,slug);
+int get hashCode => Object.hash(runtimeType,id,position,isDeleted,thumbnail,name,createdAt,updatedAt,slug);
 
 @override
 String toString() {
-  return 'CategoryModel(sId: $sId, position: $position, isDeleted: $isDeleted, thumbnail: $thumbnail, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, slug: $slug)';
+  return 'CategoryModel(id: $id, position: $position, isDeleted: $isDeleted, thumbnail: $thumbnail, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, slug: $slug)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $CategoryModelCopyWith<$Res>  {
   factory $CategoryModelCopyWith(CategoryModel value, $Res Function(CategoryModel) _then) = _$CategoryModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: '_id') String? sId, int? position, bool isDeleted, String? thumbnail, String? name, DateTime? createdAt, DateTime? updatedAt, String? slug
+@JsonKey(name: '_id') String? id, int? position, bool isDeleted, String? thumbnail, String? name, DateTime? createdAt, DateTime? updatedAt, String? slug
 });
 
 
@@ -65,9 +65,9 @@ class _$CategoryModelCopyWithImpl<$Res>
 
 /// Create a copy of CategoryModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? sId = freezed,Object? position = freezed,Object? isDeleted = null,Object? thumbnail = freezed,Object? name = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,Object? slug = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? position = freezed,Object? isDeleted = null,Object? thumbnail = freezed,Object? name = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,Object? slug = freezed,}) {
   return _then(_self.copyWith(
-sId: freezed == sId ? _self.sId : sId // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,position: freezed == position ? _self.position : position // ignore: cast_nullable_to_non_nullable
 as int?,isDeleted: null == isDeleted ? _self.isDeleted : isDeleted // ignore: cast_nullable_to_non_nullable
 as bool,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
@@ -160,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: '_id')  String? sId,  int? position,  bool isDeleted,  String? thumbnail,  String? name,  DateTime? createdAt,  DateTime? updatedAt,  String? slug)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: '_id')  String? id,  int? position,  bool isDeleted,  String? thumbnail,  String? name,  DateTime? createdAt,  DateTime? updatedAt,  String? slug)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CategoryModel() when $default != null:
-return $default(_that.sId,_that.position,_that.isDeleted,_that.thumbnail,_that.name,_that.createdAt,_that.updatedAt,_that.slug);case _:
+return $default(_that.id,_that.position,_that.isDeleted,_that.thumbnail,_that.name,_that.createdAt,_that.updatedAt,_that.slug);case _:
   return orElse();
 
 }
@@ -181,10 +181,10 @@ return $default(_that.sId,_that.position,_that.isDeleted,_that.thumbnail,_that.n
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: '_id')  String? sId,  int? position,  bool isDeleted,  String? thumbnail,  String? name,  DateTime? createdAt,  DateTime? updatedAt,  String? slug)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: '_id')  String? id,  int? position,  bool isDeleted,  String? thumbnail,  String? name,  DateTime? createdAt,  DateTime? updatedAt,  String? slug)  $default,) {final _that = this;
 switch (_that) {
 case _CategoryModel():
-return $default(_that.sId,_that.position,_that.isDeleted,_that.thumbnail,_that.name,_that.createdAt,_that.updatedAt,_that.slug);case _:
+return $default(_that.id,_that.position,_that.isDeleted,_that.thumbnail,_that.name,_that.createdAt,_that.updatedAt,_that.slug);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -201,10 +201,10 @@ return $default(_that.sId,_that.position,_that.isDeleted,_that.thumbnail,_that.n
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: '_id')  String? sId,  int? position,  bool isDeleted,  String? thumbnail,  String? name,  DateTime? createdAt,  DateTime? updatedAt,  String? slug)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: '_id')  String? id,  int? position,  bool isDeleted,  String? thumbnail,  String? name,  DateTime? createdAt,  DateTime? updatedAt,  String? slug)?  $default,) {final _that = this;
 switch (_that) {
 case _CategoryModel() when $default != null:
-return $default(_that.sId,_that.position,_that.isDeleted,_that.thumbnail,_that.name,_that.createdAt,_that.updatedAt,_that.slug);case _:
+return $default(_that.id,_that.position,_that.isDeleted,_that.thumbnail,_that.name,_that.createdAt,_that.updatedAt,_that.slug);case _:
   return null;
 
 }
@@ -216,10 +216,10 @@ return $default(_that.sId,_that.position,_that.isDeleted,_that.thumbnail,_that.n
 @JsonSerializable()
 
 class _CategoryModel extends CategoryModel {
-  const _CategoryModel({@JsonKey(name: '_id') this.sId, this.position, this.isDeleted = false, this.thumbnail, this.name, this.createdAt, this.updatedAt, this.slug}): super._();
+  const _CategoryModel({@JsonKey(name: '_id') this.id, this.position, this.isDeleted = false, this.thumbnail, this.name, this.createdAt, this.updatedAt, this.slug}): super._();
   factory _CategoryModel.fromJson(Map<String, dynamic> json) => _$CategoryModelFromJson(json);
 
-@override@JsonKey(name: '_id') final  String? sId;
+@override@JsonKey(name: '_id') final  String? id;
 @override final  int? position;
 @override@JsonKey() final  bool isDeleted;
 @override final  String? thumbnail;
@@ -241,16 +241,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CategoryModel&&(identical(other.sId, sId) || other.sId == sId)&&(identical(other.position, position) || other.position == position)&&(identical(other.isDeleted, isDeleted) || other.isDeleted == isDeleted)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.slug, slug) || other.slug == slug));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CategoryModel&&(identical(other.id, id) || other.id == id)&&(identical(other.position, position) || other.position == position)&&(identical(other.isDeleted, isDeleted) || other.isDeleted == isDeleted)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.slug, slug) || other.slug == slug));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,sId,position,isDeleted,thumbnail,name,createdAt,updatedAt,slug);
+int get hashCode => Object.hash(runtimeType,id,position,isDeleted,thumbnail,name,createdAt,updatedAt,slug);
 
 @override
 String toString() {
-  return 'CategoryModel(sId: $sId, position: $position, isDeleted: $isDeleted, thumbnail: $thumbnail, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, slug: $slug)';
+  return 'CategoryModel(id: $id, position: $position, isDeleted: $isDeleted, thumbnail: $thumbnail, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, slug: $slug)';
 }
 
 
@@ -261,7 +261,7 @@ abstract mixin class _$CategoryModelCopyWith<$Res> implements $CategoryModelCopy
   factory _$CategoryModelCopyWith(_CategoryModel value, $Res Function(_CategoryModel) _then) = __$CategoryModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: '_id') String? sId, int? position, bool isDeleted, String? thumbnail, String? name, DateTime? createdAt, DateTime? updatedAt, String? slug
+@JsonKey(name: '_id') String? id, int? position, bool isDeleted, String? thumbnail, String? name, DateTime? createdAt, DateTime? updatedAt, String? slug
 });
 
 
@@ -278,9 +278,9 @@ class __$CategoryModelCopyWithImpl<$Res>
 
 /// Create a copy of CategoryModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? sId = freezed,Object? position = freezed,Object? isDeleted = null,Object? thumbnail = freezed,Object? name = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,Object? slug = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? position = freezed,Object? isDeleted = null,Object? thumbnail = freezed,Object? name = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,Object? slug = freezed,}) {
   return _then(_CategoryModel(
-sId: freezed == sId ? _self.sId : sId // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,position: freezed == position ? _self.position : position // ignore: cast_nullable_to_non_nullable
 as int?,isDeleted: null == isDeleted ? _self.isDeleted : isDeleted // ignore: cast_nullable_to_non_nullable
 as bool,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
