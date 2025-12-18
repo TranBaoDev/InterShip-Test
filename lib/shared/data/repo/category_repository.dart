@@ -46,7 +46,7 @@ class CategoryRepository {
       );
 
       if (response.statusCode == 200) {
-        final List datas = response.data as List;
+        final datas = response.data as List;
         return datas
             .map((data) => CategoryModel.fromJson(data as Map<String, dynamic>))
             .toList();

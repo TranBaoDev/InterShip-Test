@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:testing/shared/data/model/result/result_model.dart';
 import 'package:testing/shared/data/model/store/store_model.dart';
 import 'package:testing/shared/data/repo/store_repositories.dart';
 

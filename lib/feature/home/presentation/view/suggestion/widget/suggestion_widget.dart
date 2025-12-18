@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testing/core/asset/app_svgs.dart';
-import 'package:testing/core/style/app_colors.dart';
-import 'package:testing/core/utils/distance_formatter.dart';
 import 'package:testing/feature/home/presentation/view/suggestion/bloc/suggestion_bloc.dart';
 import 'package:testing/feature/home/presentation/view/suggestion/widget/food_slider_item.dart';
 import 'package:testing/shared/app_text.dart';

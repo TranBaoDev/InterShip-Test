@@ -1,187 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testing/core/asset/app_svgs.dart';
 import 'package:testing/core/style/app_colors.dart';
+import 'package:testing/feature/home/presentation/view/suggestion/bloc/suggestion_bloc.dart';
+import 'package:testing/feature/home/presentation/view/suggestion/widget/nearby_item.dart';
+import 'package:testing/l10n/l10n.dart';
 import 'package:testing/shared/app_text.dart';
 
 class NearbyWidget extends StatelessWidget {
-  const NearbyWidget({
-    required this.assetName,
-    required this.title,
-    required this.tags,
-    required this.promotion,
-    required this.rating,
-    required this.reviewCount,
-    required this.distance,
-    super.key,
-    this.showDivider = true,
-    this.isClosed = false,
-  });
-  final String assetName;
-  final String title;
-  final List<String> tags;
-  final String promotion;
-  final double rating;
-  final int reviewCount;
-  final double distance;
-  final bool showDivider;
-  final bool isClosed;
+  const NearbyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Image with closed overlay
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Stack(
-                children: [
-                  Image.asset(
-                    assetName,
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover,
-                  ),
-                  if (isClosed)
-                    Container(
-                      width: 100,
-                      height: 100,
-                      color: Colors.black.withOpacity(0.5),
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Đã đóng cửa',
-                        style: AppTextStyle.body2.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Title
-                  Text(
-                    title,
-                    style: AppTextStyle.body1.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 8),
+    return BlocBuilder<SuggestionBloc, SuggestionState>(
+      builder: (context, state) {
+        if (state is StoreLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-                  // Tags
-                  if (tags.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Wrap(
-                        spacing: 8,
-                        children: tags
-                            .map(
-                              (tag) => Text(
-                                tag,
-                                style: AppTextStyle.caption.copyWith(
-                                  color: AppColors.tagTextColor,
-                                ),
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    ),
-                  const SizedBox(height: 8),
+        if (state is StoreLoaded) {
+          return ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: state.stores.length,
+            separatorBuilder: (_, __) => const Divider(color: Colors.black26),
+            itemBuilder: (context, index) {
+              final store = state.stores[index];
 
-                  // Rating and Distance
-                  Row(
-                    children: [
-                      const SvgPictureWidget(
-                        assetName: AppSvgs.iconStar,
-                        height: 14,
-                        width: 14,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        rating.toString(),
-                        style: AppTextStyle.caption.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        '($reviewCount)',
-                        style: AppTextStyle.caption.copyWith(
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      const SvgPictureWidget(
-                        assetName: AppSvgs.iconLocationMarked,
-                        height: 14,
-                        color: Colors.grey,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        '${distance}km',
-                        style: AppTextStyle.caption.copyWith(
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
+              return NearbyItem(
+                imageUrl: '${store.avatar}',
+                name: '${store.fullName}',
+                tags: const ['Cơm', 'Món Việt'],
+                avgRating: store.avgRating,
+                countRating: store.countRating,
+                distance: store.distance!,
+                promotion: 'Giảm 12% đơn từ 120k',
+              );
+            },
+          );
+        }
 
-                  // Promotion badge
-                  if (promotion.isNotEmpty)
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(4),
-                        border: Border.all(
-                          color: AppColors.salesColor,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const SvgPictureWidget(
-                            assetName: AppSvgs.iconSaleTag,
-                            height: 12,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            promotion,
-                            style: AppTextStyle.caption.copyWith(
-                              color: AppColors.salesColor,
-                              fontWeight: FontWeight.w500,
-                              fontStyle: FontStyle.italic,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        if (showDivider) ...[
-          const SizedBox(height: 15),
-          const Divider(
-            color: Colors.black26,
-          ),
-        ],
-      ],
+        return const SizedBox.shrink();
+      },
     );
   }
 }

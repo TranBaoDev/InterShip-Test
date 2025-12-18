@@ -6,6 +6,7 @@ import 'package:testing/feature/home/presentation/view/suggestion/bloc/suggestio
 import 'package:testing/feature/home/presentation/view/suggestion/widget/nearby_widget.dart';
 import 'package:testing/feature/home/presentation/view/suggestion/widget/suggestion_widget.dart';
 import 'package:testing/l10n/l10n.dart';
+import 'package:testing/shared/app_text.dart';
 
 class HomeSuggestion extends StatefulWidget {
   const HomeSuggestion({super.key});
@@ -38,53 +39,17 @@ class _HomeSuggestionState extends State<HomeSuggestion> {
               caption: context.l10n.newResnewExp,
               showRating: false,
             ),
-            const SizedBox(height: 40),
-            const NearbyWidget(
-              assetName: AppAssets.imgPreview1,
-              title: 'Bánh mì & Bánh bao Ba Hưng Bakery',
-              tags: ['Cơm', 'Món Việt'],
-              promotion: 'Giảm 12% đơn từ 120k',
-              rating: 4.7,
-              reviewCount: 523,
-              distance: 0.8,
-            ),
-            const NearbyWidget(
-              assetName: AppAssets.imgPreview2,
-              title: 'Pizza Hut',
-              tags: ['Cơm', 'Món Việt'],
-              promotion: 'Giảm 18k đơn từ 90k',
-              rating: 4.7,
-              reviewCount: 523,
-              distance: 0.8,
-              isClosed: true,
-            ),
-            const NearbyWidget(
-              assetName: AppAssets.imgPreview3,
-              title: 'Memories Trà & Cà phê',
-              tags: ['Trà sữa', 'Đồ uống', 'Cà phê'],
-              promotion: 'Giảm 5k đơn từ 20k',
-              rating: 4.7,
-              reviewCount: 523,
-              distance: 0.8,
-            ),
-            const NearbyWidget(
-              assetName: AppAssets.imgPreview4,
-              title: 'Bánh mì & Bánh bao Ba Hưng Bakery',
-              tags: ['Cơm', 'Món Việt'],
-              promotion: 'Giảm 35% đơn từ 55k',
-              rating: 4.7,
-              reviewCount: 523,
-              distance: 0.8,
-            ),
-            const NearbyWidget(
-              assetName: AppAssets.imgPreview5,
-              title: 'Pizza Hut',
-              tags: ['Cơm', 'Món Việt'],
-              promotion: 'Giảm 1k đơn từ 1k',
-              rating: 4.7,
-              reviewCount: 523,
-              distance: 0.8,
-              isClosed: true,
+            const SizedBox(height: 30),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  context.l10n.delicResNearby,
+                  style: AppTextStyle.h3,
+                ),
+                const SizedBox(height: 8),
+                const NearbyWidget(),
+              ],
             ),
           ],
         ),
