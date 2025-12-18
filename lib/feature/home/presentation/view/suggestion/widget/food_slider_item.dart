@@ -1,7 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:testing/core/asset/app_assets.dart';
 import 'package:testing/core/asset/app_svgs.dart';
-import 'package:testing/core/style/app_colors.dart';
 import 'package:testing/core/utils/distance_formatter.dart';
 import 'package:testing/shared/app_text.dart';
 
@@ -33,11 +32,25 @@ class FoodSliderItem extends StatelessWidget {
           /// IMAGE
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              imageUrl,
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
               width: 140,
               height: 140,
               fit: BoxFit.cover,
+              placeholder: (context, url) => Container(
+                width: 140,
+                height: 140,
+                color: Colors.grey[300],
+                child: const Center(
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
+              ),
+              errorWidget: (context, url, error) => Container(
+                width: 140,
+                height: 140,
+                color: Colors.grey[300],
+                child: const Icon(Icons.broken_image, size: 40),
+              ),
             ),
           ),
 

@@ -30,7 +30,7 @@ class StoreDataSource {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return TimeoutException('Connection took too long. Please try again.');
+        return TimeoutException();
 
       case DioExceptionType.connectionError:
         return NetworkException('Unable to connect to the server.');
