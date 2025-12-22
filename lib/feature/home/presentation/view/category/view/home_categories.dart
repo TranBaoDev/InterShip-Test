@@ -55,79 +55,74 @@ class _HomeCategoriesState extends State<HomeCategories> {
               return const Center(child: CircularProgressIndicator());
             }
             if (state is CategoriesLoaded) {
-              return RefreshIndicator(
-                onRefresh: () async {
-                  context.read<CategoriesBloc>().add(
-                    const RefreshCategoriesEvent(),
-                  );
-                },
-                child: SizedBox(
+              if (state.categories.isEmpty) {
+                return SizedBox(
                   height: size.height * 0.27,
-                  child: PageView.builder(
-                    controller: _controller,
-                    onPageChanged: (index) {
-                      setState(() {
-                        currentIndex = index;
-                      });
-                    },
-                    itemCount: (state.categories.length / 8).ceil(),
-                    itemBuilder: (context, page) {
-                      final start = page * 8;
-                      final end = (start + 8 <= state.categories.length)
-                          ? start + 8
-                          : state.categories.length;
-
-                      final pageItems = state.categories.sublist(start, end);
-                      return GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 4,
-                              mainAxisSpacing: 12,
-                              crossAxisSpacing: 12,
-                              childAspectRatio: 0.8,
-                            ),
-                        itemCount: pageItems.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              ClipOval(
-                                child: CachedNetworkImage(
-                                  imageUrl: '${pageItems[index].thumbnail}',
+                  child: Center(
+                    child: _emptyCategory(),
+                  ),
+                );
+              }
+              return SizedBox(
+                height: size.height * 0.27,
+                child: PageView.builder(
+                  controller: _controller,
+                  onPageChanged: (index) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
+                  itemCount: state.totalPages,
+                  itemBuilder: (context, page) {
+                    final pageItems = state.pages[page];
+                    return GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            mainAxisSpacing: 12,
+                            crossAxisSpacing: 12,
+                            childAspectRatio: 0.8,
+                          ),
+                      itemCount: pageItems.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            ClipOval(
+                              child: CachedNetworkImage(
+                                imageUrl: '${pageItems[index].thumbnail}',
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => Container(
                                   width: 60,
                                   height: 60,
-                                  fit: BoxFit.cover,
-                                  placeholder: (context, url) => Container(
-                                    width: 60,
-                                    height: 60,
-                                    color: Colors.grey,
+                                  color: Colors.grey,
+                                ),
+                                errorWidget: (context, url, error) => Container(
+                                  width: 60,
+                                  height: 60,
+                                  color: Colors.black12,
+                                  child: const Icon(
+                                    Icons.image_not_supported,
                                   ),
-                                  errorWidget: (context, url, error) =>
-                                      Container(
-                                        width: 60,
-                                        height: 60,
-                                        color: Colors.black12,
-                                        child: const Icon(
-                                          Icons.image_not_supported,
-                                        ),
-                                      ),
                                 ),
                               ),
+                            ),
 
-                              const SizedBox(
-                                height: 7,
-                              ),
-                              Text(
-                                '${pageItems[index].name}',
-                                textAlign: TextAlign.center,
-                                style: AppTextStyle.bodyBold,
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                  ),
+                            const SizedBox(
+                              height: 7,
+                            ),
+                            Text(
+                              '${pageItems[index].name}',
+                              textAlign: TextAlign.center,
+                              style: AppTextStyle.bodyBold,
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                 ),
               );
             }
@@ -143,6 +138,24 @@ class _HomeCategoriesState extends State<HomeCategories> {
             dotHeight: 6,
             activeDotColor: AppColors.indicator,
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _emptyCategory() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Icon(
+          Icons.sentiment_dissatisfied,
+          size: 48,
+          color: Colors.grey,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Danh mục hiện đang trống',
+          style: AppTextStyle.caption,
         ),
       ],
     );

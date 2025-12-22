@@ -16,16 +16,38 @@ final class CategoriesLoading extends CategoriesState {
 }
 
 final class CategoriesLoaded extends CategoriesState {
-  const CategoriesLoaded(this.categories);
+  CategoriesLoaded({
+    required this.categories,
+    this.pageSize = 8,
+  }) : pages = _paginate(categories, pageSize);
+
   final List<CategoryModel> categories;
+  final int pageSize;
+  final List<List<CategoryModel>> pages;
+
+  static List<List<CategoryModel>> _paginate(
+    List<CategoryModel> list,
+    int size,
+  ) {
+    final result = <List<CategoryModel>>[];
+    for (var i = 0; i < list.length; i += size) {
+      result.add(
+        list.sublist(
+          i,
+          i + size > list.length ? list.length : i + size,
+        ),
+      );
+    }
+    return result;
+  }
+
+  // ===== helpers cho UI =====
+  bool get isEmpty => categories.isEmpty;
+  bool get isNotEmpty => categories.isNotEmpty;
+  int get totalPages => pages.length;
 
   @override
-  List<Object> get props => [categories];
-
-  //Helper methods
-  bool get isEmpty => categories.isEmpty;
-  bool get isNoteEmpty => categories.isNotEmpty;
-  int get count => categories.length;
+  List<Object> get props => [categories, pageSize, pages];
 }
 
 class CategoriesError extends CategoriesState {

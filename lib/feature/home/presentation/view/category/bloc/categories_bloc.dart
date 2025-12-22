@@ -22,7 +22,13 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     emit(const CategoriesLoading());
     try {
       final categories = await repository.find(filter: 'isDeleted=false');
-      emit(CategoriesLoaded(categories));
+
+      emit(
+        CategoriesLoaded(
+          categories: categories,
+          pageSize: 8,
+        ),
+      );
     } catch (e) {
       emit(CategoriesError('Unable to load the list of categories: $e'));
     }
@@ -33,10 +39,8 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     Emitter<CategoriesState> emit,
   ) async {
     try {
-      final categories = await repository.find(
-        filter: 'isDeleted=false',
-      );
-      emit(CategoriesLoaded(categories));
+      final categories = await repository.find(filter: 'isDeleted=false');
+      emit(CategoriesLoaded(categories: categories));
     } catch (e) {
       emit(CategoriesError('Unable to refresh categories: $e'));
     }

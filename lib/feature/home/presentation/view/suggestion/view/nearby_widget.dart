@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testing/core/asset/app_svgs.dart';
-import 'package:testing/core/style/app_colors.dart';
 import 'package:testing/feature/home/presentation/view/suggestion/bloc/suggestion_bloc.dart';
 import 'package:testing/feature/home/presentation/view/suggestion/widget/nearby_item.dart';
-import 'package:testing/l10n/l10n.dart';
-import 'package:testing/shared/app_text.dart';
 
 class NearbyWidget extends StatelessWidget {
   const NearbyWidget({super.key});

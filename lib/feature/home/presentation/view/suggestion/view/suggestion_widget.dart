@@ -5,7 +5,7 @@ import 'package:testing/feature/home/presentation/view/suggestion/bloc/suggestio
 import 'package:testing/feature/home/presentation/view/suggestion/widget/food_slider_item.dart';
 import 'package:testing/shared/app_text.dart';
 
-class SuggestionWidget extends StatefulWidget {
+class SuggestionWidget extends StatelessWidget {
   const SuggestionWidget({
     required this.caption,
     required this.title,
@@ -18,19 +18,6 @@ class SuggestionWidget extends StatefulWidget {
   final bool showRating;
 
   @override
-  State<SuggestionWidget> createState() => _SuggestionWidgetState();
-}
-
-class _SuggestionWidgetState extends State<SuggestionWidget> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<SuggestionBloc>().add(const LoadStore());
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +25,7 @@ class _SuggestionWidgetState extends State<SuggestionWidget> {
         /// ===== TITLE =====
         Row(
           children: [
-            Text(widget.title, style: AppTextStyle.h3),
+            Text(title, style: AppTextStyle.h3),
             const Spacer(),
             const Padding(
               padding: EdgeInsets.only(right: 16),
@@ -51,7 +38,7 @@ class _SuggestionWidgetState extends State<SuggestionWidget> {
           ],
         ),
 
-        Text(widget.caption, style: AppTextStyle.caption),
+        Text(caption, style: AppTextStyle.caption),
         const SizedBox(height: 12),
 
         /// ===== SLIDER =====
@@ -67,8 +54,6 @@ class _SuggestionWidgetState extends State<SuggestionWidget> {
               );
             }
           },
-          buildWhen: (_, state) =>
-              state is StoreLoading || state is StoreLoaded,
           builder: (context, state) {
             if (state is StoreLoading) {
               return const SizedBox(
@@ -93,7 +78,7 @@ class _SuggestionWidgetState extends State<SuggestionWidget> {
                       avgRating: store.avgRating,
                       countRating: store.countRating,
                       distance: store.distance!,
-                      showRating: widget.showRating,
+                      showRating: showRating,
                     );
                   },
                 ),
