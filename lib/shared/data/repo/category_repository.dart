@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:testing/shared/data/model/catogory/category_model.dart';
-import 'package:testing/shared/network/api_exception.dart';
 import 'package:testing/shared/network/dio_client.dart';
 import 'package:testing/shared/network/endpoints.dart';
 
